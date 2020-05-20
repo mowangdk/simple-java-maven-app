@@ -9,6 +9,7 @@ ADD ./src src/
 RUN mvn clean package
 
 # Second stage: minimal runtime environment
+# Run
 From java:8
 
 # copy jar from the first stage
