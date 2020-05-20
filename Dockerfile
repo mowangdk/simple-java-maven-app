@@ -1,4 +1,4 @@
-# First stage: complete build environment
+#### First stage: complete build environment
 FROM maven:3.5.0-jdk-8-alpine AS builder
 
 # add pom.xml and source code
