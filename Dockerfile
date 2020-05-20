@@ -1,10 +1,18 @@
-FROM java:8
+# First stage: complete build environment
+FROM maven:3.5.0-jdk-8-alpine AS builder
 
-LABEL maintainer="zl205639@alibaba-inc.com"
+# add pom.xml and source code
+ADD ./pom.xml pom.xml
+ADD ./src src/
 
-WORKDIR /
+# package jar
+RUN mvn clean package
 
-ADD ./target/my-app-1.0-SNAPSHOT.jar my-app-1.0-SNAPSHOT.jar
+# Second stage: minimal runtime environment
+From openjdk:8-jre-alpine
+
+# copy jar from the first stage
+COPY --from=builder target/my-app-1.0-SNAPSHOT.jar my-app-1.0-SNAPSHOT.jar
 
 EXPOSE 8080
 
