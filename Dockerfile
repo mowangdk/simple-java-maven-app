@@ -1,3 +1,3 @@
 from marketplace-registry.cn-shanghai.cr.aliyuncs.com/20363988/nginx:1.17.5
 
-RUN echo '<h1>Welcome to ACR !</h1>' > /usr/share/nginx/html/index.html
+RUN echo '<h1>Welcome to ACR EE!</h1>' > /usr/share/nginx/html/index.html
